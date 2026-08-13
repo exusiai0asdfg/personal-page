@@ -5,8 +5,11 @@
 
 .work-page {
   min-height: 100vh;
-  background: #0b1220;
-  color: #e5e7eb;
+  background:
+    radial-gradient(circle at top right, rgba(107, 114, 128, 0.12), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(31, 41, 55, 0.07), transparent 28%),
+    var(--page-bg, #f8f7f2);
+  color: var(--page-fg, #111827);
   position: relative;
 }
 
@@ -19,7 +22,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(8px) brightness(0.55);
+  filter: blur(4px) brightness(0.55);
   pointer-events: none;
 }
 
@@ -141,16 +144,14 @@
   display: block;
 }
 
-/* ── 正文卡片（深色玻璃拟态） ── */
+/* ── 正文卡片 ── */
 .work-shell__content {
-  background: rgba(15, 23, 42, 0.72);
+  background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 24px;
   padding: 32px 34px 28px;
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
-  color: #e5e7eb;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
 }
 
 .work-shell__content h2 {
@@ -172,16 +173,16 @@
   border-radius: 20px;
   text-decoration: none;
   color: inherit;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .work-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(96, 165, 250, 0.4);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
 }
 
 .work-card h2 {
@@ -216,18 +217,18 @@
 
 /* 正文内链接样式（适配深色背景） */
 .work-shell__content a {
-  color: #7cb3f7;
+  color: #3b82f6;
   text-decoration: underline;
   text-underline-offset: 2px;
-  text-decoration-color: rgba(124, 179, 247, 0.35);
+  text-decoration-color: rgba(59, 130, 246, 0.4);
   transition: color 0.15s, text-decoration-color 0.15s;
 }
 .work-shell__content a:hover {
-  color: #a5cdfa;
-  text-decoration-color: rgba(165, 205, 250, 0.65);
+  color: #60a5fa;
+  text-decoration-color: rgba(96, 165, 250, 0.7);
 }
 .work-shell__content a:visited {
-  color: #a78bfa;
+  color: #7c3aed;
 }
 
 .work-shell__switcher {
@@ -281,6 +282,22 @@
 
   .work-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .work-page {
+    background:
+      radial-gradient(circle at top right, rgba(148, 163, 184, 0.08), transparent 32%),
+      radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.26), transparent 28%),
+      #0b1220;
+    color: #e5e7eb;
+  }
+
+  .work-shell__content {
+    background: rgba(15, 23, 42, 0.78);
+    border-color: rgba(148, 163, 184, 0.16);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
   }
 }
 

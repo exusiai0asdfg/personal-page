@@ -1,4 +1,8 @@
 /* Academic / Introduction homepage styles */
+:root {
+  --work-bg-image: url('../img/XJTU.jpg');   /* 换背景: 替换 img/XJTU.jpg 或改此处 */
+}
+
 .work-page {
   min-height: 100vh;
   background: #0b1220;

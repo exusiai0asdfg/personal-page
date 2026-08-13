@@ -1,35 +1,31 @@
-/* Academic / Work homepage styles */
+/* Academic / Introduction homepage styles */
 .work-page {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgba(107, 114, 128, 0.12), transparent 32%),
-    radial-gradient(circle at bottom left, rgba(31, 41, 55, 0.07), transparent 28%),
-    var(--page-bg, #f8f7f2);
-  color: var(--page-fg, #111827);
+  background: #0b1220;
+  color: #e5e7eb;
   position: relative;
-  isolation: isolate;      /* 建立 stacking context，让负 z-index 的伪元素留在本层内 */
 }
 
-/* 全屏固定背景图层（带模糊蒙版） */
-.work-page::before {
-  content: "";
+/* 全屏固定背景图层（真实元素，带模糊蒙版） */
+.work-bg {
   position: fixed;
-  inset: -4%;               /* 放大以消除模糊边缘白边 */
-  z-index: -2;
+  inset: -4%;
+  z-index: 0;
   background-image: var(--work-bg-image, none);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   filter: blur(8px) brightness(0.55);
+  pointer-events: none;
 }
 
 /* 背景上的暗色遮罩 */
-.work-page::after {
-  content: "";
+.work-bg-overlay {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   background: linear-gradient(180deg, rgba(2, 6, 23, 0.18), rgba(2, 6, 23, 0.45) 60%, rgba(2, 6, 23, 0.72));
+  pointer-events: none;
 }
 
 .work-shell {
@@ -37,7 +33,7 @@
   margin: 0 auto;
   padding: 40px 24px 28px;
   position: relative;
-  z-index: 0;
+  z-index: 2;
 }
 
 /* ── 太空舱式玻璃拟态导航栏 ── */
@@ -141,14 +137,16 @@
   display: block;
 }
 
-/* ── 正文卡片 ── */
+/* ── 正文卡片（深色玻璃拟态） ── */
 .work-shell__content {
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(15, 23, 42, 0.72);
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   padding: 32px 34px 28px;
-  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+  color: #e5e7eb;
 }
 
 .work-shell__content h2 {
@@ -170,16 +168,16 @@
   border-radius: 20px;
   text-decoration: none;
   color: inherit;
-  background: rgba(255, 255, 255, 0.64);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .work-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.28);
-  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
 }
 
 .work-card h2 {
@@ -214,18 +212,18 @@
 
 /* 正文内链接样式（适配深色背景） */
 .work-shell__content a {
-  color: #3b82f6;
+  color: #7cb3f7;
   text-decoration: underline;
   text-underline-offset: 2px;
-  text-decoration-color: rgba(59, 130, 246, 0.4);
+  text-decoration-color: rgba(124, 179, 247, 0.35);
   transition: color 0.15s, text-decoration-color 0.15s;
 }
 .work-shell__content a:hover {
-  color: #60a5fa;
-  text-decoration-color: rgba(96, 165, 250, 0.7);
+  color: #a5cdfa;
+  text-decoration-color: rgba(165, 205, 250, 0.65);
 }
 .work-shell__content a:visited {
-  color: #7c3aed;
+  color: #a78bfa;
 }
 
 .work-shell__switcher {
@@ -279,22 +277,6 @@
 
   .work-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .work-page {
-    background:
-      radial-gradient(circle at top right, rgba(148, 163, 184, 0.08), transparent 32%),
-      radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.26), transparent 28%),
-      #0b1220;
-    color: #e5e7eb;
-  }
-
-  .work-shell__content {
-    background: rgba(15, 23, 42, 0.78);
-    border-color: rgba(148, 163, 184, 0.16);
-    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
   }
 }
 
